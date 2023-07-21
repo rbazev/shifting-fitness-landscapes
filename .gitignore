@@ -1,0 +1,6 @@
+.DS_Store
+*.fastq.gz
+*~$*
+__pycache__
+sim-*.csv
+.ipynb_checkpoints/
