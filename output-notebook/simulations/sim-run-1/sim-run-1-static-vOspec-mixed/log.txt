@@ -1,0 +1,9 @@
+population_size=5000000000.0
+startingpop=None
+mutation_rate=7.7e-08
+num_generations=500
+num_sims=500
+landscape_trajectory=static:vOspec-mixed
+noisepergen=0.0
+noisepersim=0.6
+execution time = 474.8144328594208

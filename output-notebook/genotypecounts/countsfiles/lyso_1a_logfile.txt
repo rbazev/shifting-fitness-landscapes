@@ -1,0 +1,19 @@
+after parsing FASTQ_files, initially saw these distributions for barcode lengths -- but note that if a read had barcode lengths outside of 5-12 on either side, that read pair is discarded:
+barcode 1 length distribution:
+[(9, 4342418), (7, 4009872), (6, 4007625), (5, 3860342), (8, 3814416), (10, 3464556), (12, 3403137), (11, 3108074), (4, 16909), (13, 3730), (3, 2054), (2, 1145), (1, 336), (14, 244), (0, 237), (15, 104), (16, 52), (18, 24), (17, 19), (21, 18), (25, 15), (24, 14), (33, 12), (27, 10), (20, 5), (28, 3), (19, 3), (29, 1)]
+barcode 2 length distribution:
+[(5, 4439824), (6, 4352770), (7, 4131841), (9, 4041645), (8, 3821680), (11, 3208502), (10, 3140564), (12, 2883938), (4, 7061), (13, 3361), (3, 1759), (2, 835), (1, 638), (0, 350), (14, 178), (15, 134), (17, 86), (18, 71), (16, 49), (19, 31), (29, 18), (24, 18), (20, 17), (32, 2), (40, 1), (44, 1), (22, 1)]
+Discarded 0 reads that failed illumina filter
+
+Out of 31349993 read pairs:
+	purged 0,
+	discarded 37049 for containing N,
+	discarded 39543 for improper barcode length,
+	discarded 1277569 for failed substring search.
+
+Overall retained 29995832 read pairs containing 10874179 unique barcodes, prior to consensus building.
+
+distribution of number of reads per observed barcode (note consensus was only built for >= 3 reads per barcode):
+[(1, 7728578), (2, 1353440), (3, 247273), (11, 121757), (12, 121368), (13, 117401), (10, 117390), (14, 107693), (9, 107355), (8, 95966), (15, 95492), (16, 82269), (7, 82107), (4, 77738), (6, 69130), (17, 68830), (5, 60603), (18, 55581), (19, 43616), (20, 33056), (21, 24635), (22, 18137), (23, 13026), (24, 9250), (25, 6323), (26, 4392), (27, 3047), (28, 2138), (29, 1595), (30, 1150), (31, 800), (32, 603), (33, 473), (34, 382), (35, 315), (36, 248), (37, 178), (38, 136), (39, 116), (40, 112), (41, 83), (42, 72), (43, 70), (44, 48), (46, 36), (45, 33), (47, 23), (50, 14), (51, 13), (48, 13), (49, 12), (52, 12), (54, 11), (56, 5), (55, 5), (53, 5), (61, 4), (72, 4), (57, 4), (66, 2), (63, 2), (60, 2), (62, 2), (64, 1), (87, 1), (59, 1), (67, 1), (73, 1)]
+
+number of retained barcodes, ie, number of consensus sequences built: 1792161

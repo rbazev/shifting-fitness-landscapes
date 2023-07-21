@@ -1,0 +1,19 @@
+after parsing FASTQ_files, initially saw these distributions for barcode lengths -- but note that if a read had barcode lengths outside of 5-12 on either side, that read pair is discarded:
+barcode 1 length distribution:
+[(9, 3797185), (6, 3533254), (7, 3524921), (5, 3429302), (8, 3395894), (10, 3022153), (12, 2964008), (11, 2751289), (4, 14254), (13, 3031), (3, 1625), (2, 792), (1, 438), (14, 214), (15, 123), (0, 107), (20, 58), (16, 50), (22, 19), (33, 10), (38, 3), (18, 3), (19, 3), (46, 1)]
+barcode 2 length distribution:
+[(7, 3939600), (5, 3846846), (6, 3463505), (8, 3295233), (9, 3051078), (10, 2995383), (11, 2988626), (12, 2844050), (4, 7358), (13, 4625), (3, 963), (2, 477), (1, 176), (0, 149), (14, 118), (15, 108), (21, 72), (18, 48), (16, 40), (22, 39), (29, 28), (17, 28), (43, 25), (20, 24), (19, 22), (46, 20), (24, 18), (33, 18), (23, 18), (36, 15), (28, 12), (27, 9), (39, 6)]
+Discarded 0 reads that failed illumina filter
+
+Out of 28016680 read pairs:
+	purged 0,
+	discarded 28838 for containing N,
+	discarded 35125 for improper barcode length,
+	discarded 1549105 for failed substring search.
+
+Overall retained 26403612 read pairs containing 11034429 unique barcodes, prior to consensus building.
+
+distribution of number of reads per observed barcode (note consensus was only built for >= 3 reads per barcode):
+[(1, 8991960), (2, 735529), (12, 96409), (13, 95911), (11, 92647), (14, 91572), (10, 86315), (15, 84465), (9, 78018), (3, 76190), (16, 74862), (8, 69462), (17, 64107), (7, 59505), (18, 52568), (6, 50133), (5, 42152), (19, 42022), (4, 38257), (20, 32292), (21, 24293), (22, 17532), (23, 12336), (24, 8309), (25, 5661), (26, 3869), (27, 2509), (28, 1609), (29, 1041), (30, 793), (31, 506), (32, 363), (33, 278), (34, 208), (35, 154), (36, 135), (37, 108), (38, 95), (39, 70), (40, 47), (41, 29), (42, 24), (44, 23), (43, 18), (45, 16), (46, 7), (49, 4), (48, 4), (50, 3), (51, 3), (57, 2), (52, 2), (62, 1), (47, 1)]
+
+number of retained barcodes, ie, number of consensus sequences built: 1306940

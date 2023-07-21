@@ -1,0 +1,14 @@
+name: notebookenv
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - matplotlib
+  - pandas
+  - pip
+  - pip:
+    - scikit-learn
+    - notebook
+    - pysam
+    - networkx[default]

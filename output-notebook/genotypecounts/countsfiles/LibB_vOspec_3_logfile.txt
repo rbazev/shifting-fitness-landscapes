@@ -1,0 +1,19 @@
+after parsing FASTQ_files, initially saw these distributions for barcode lengths -- but note that if a read had barcode lengths outside of 5-12 on either side, that read pair is discarded:
+barcode 1 length distribution:
+[(9, 2720422), (6, 2552118), (7, 2533950), (5, 2486023), (8, 2439370), (10, 2164736), (12, 2099278), (11, 1953457), (4, 11478), (13, 2107), (3, 1140), (2, 445), (1, 312), (14, 131), (15, 118), (0, 106), (16, 71), (23, 31), (20, 19), (21, 17), (25, 14), (35, 13), (22, 8), (47, 4), (17, 3), (24, 3), (31, 2), (29, 1)]
+barcode 2 length distribution:
+[(7, 2810644), (5, 2702883), (6, 2465202), (8, 2379653), (9, 2218565), (11, 2166337), (10, 2161192), (12, 2049788), (4, 5681), (13, 3306), (3, 806), (2, 434), (1, 268), (14, 216), (0, 67), (17, 44), (15, 40), (27, 39), (20, 39), (23, 34), (22, 28), (30, 20), (40, 16), (19, 15), (37, 11), (16, 11), (32, 10), (26, 9), (34, 6), (33, 5), (24, 2), (25, 1), (18, 1), (36, 1), (35, 1), (31, 1), (29, 1)]
+Discarded 0 reads that failed illumina filter
+
+Out of 20110236 read pairs:
+	purged 0,
+	discarded 20601 for containing N,
+	discarded 27126 for improper barcode length,
+	discarded 1124258 for failed substring search.
+
+Overall retained 18938251 read pairs containing 8370929 unique barcodes, prior to consensus building.
+
+distribution of number of reads per observed barcode (note consensus was only built for >= 3 reads per barcode):
+[(1, 6484735), (2, 517008), (7, 143239), (8, 142698), (6, 136386), (9, 134256), (5, 121996), (10, 118134), (3, 108800), (4, 105261), (11, 98991), (12, 78140), (13, 59184), (14, 42500), (15, 29292), (16, 19490), (17, 12271), (18, 7749), (19, 4659), (20, 2669), (21, 1537), (22, 818), (23, 475), (24, 253), (25, 150), (26, 84), (27, 61), (28, 24), (29, 21), (30, 20), (32, 9), (31, 6), (33, 5), (41, 1), (37, 1), (36, 1), (35, 1), (45, 1), (34, 1), (38, 1), (39, 1)]
+
+number of retained barcodes, ie, number of consensus sequences built: 1369186

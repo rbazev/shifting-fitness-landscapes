@@ -1,0 +1,64 @@
+Doing linear regression and model selection within the main data output directory:
+output-notebook
+Will include the following samples:
+['LibA_vGen_1', 'LibA_vGen_2', 'LibA_vGen_3', 'LibA_vLspec_1', 'LibA_vLspec_2', 'LibA_vLspec_3', 'LibA_vOspec_1', 'LibA_vOspec_2', 'LibA_vOspec_3', 'LibB_vGen_1', 'LibB_vGen_2', 'LibB_vGen_3', 'LibB_vLspec_1', 'LibB_vLspec_2', 'LibB_vLspec_3', 'LibB_vOspec_1', 'LibB_vOspec_2', 'LibB_vOspec_3']
+
+
+Parsing sr data from LibA_vGen_1 to include in feature matrixFor LibA_vGen_1, Library LibA vs. Competitor EvoC on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibA_vGen_1.csv
+
+Parsing sr data from LibA_vGen_2 to include in feature matrixFor LibA_vGen_2, Library LibA vs. Competitor EvoC on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibA_vGen_2.csv
+
+Parsing sr data from LibA_vGen_3 to include in feature matrixFor LibA_vGen_3, Library LibA vs. Competitor EvoC on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibA_vGen_3.csv
+
+Parsing sr data from LibA_vLspec_1 to include in feature matrixFor LibA_vLspec_1, Library LibA vs. Competitor Lspec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibA_vLspec_1.csv
+
+Parsing sr data from LibA_vLspec_2 to include in feature matrixFor LibA_vLspec_2, Library LibA vs. Competitor Lspec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibA_vLspec_2.csv
+
+Parsing sr data from LibA_vLspec_3 to include in feature matrixFor LibA_vLspec_3, Library LibA vs. Competitor Lspec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibA_vLspec_3.csv
+
+Parsing sr data from LibA_vOspec_1 to include in feature matrixFor LibA_vOspec_1, Library LibA vs. Competitor Ospec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibA_vOspec_1.csv
+
+Parsing sr data from LibA_vOspec_2 to include in feature matrixFor LibA_vOspec_2, Library LibA vs. Competitor Ospec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibA_vOspec_2.csv
+
+Parsing sr data from LibA_vOspec_3 to include in feature matrixFor LibA_vOspec_3, Library LibA vs. Competitor Ospec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibA_vOspec_3.csv
+
+Parsing sr data from LibB_vGen_1 to include in feature matrixFor LibB_vGen_1, Library LibB vs. Competitor EvoC on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibB_vGen_1.csv
+
+Parsing sr data from LibB_vGen_2 to include in feature matrixFor LibB_vGen_2, Library LibB vs. Competitor EvoC on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibB_vGen_2.csv
+
+Parsing sr data from LibB_vGen_3 to include in feature matrixFor LibB_vGen_3, Library LibB vs. Competitor EvoC on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibB_vGen_3.csv
+
+Parsing sr data from LibB_vLspec_1 to include in feature matrixFor LibB_vLspec_1, Library LibB vs. Competitor Lspec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibB_vLspec_1.csv
+
+Parsing sr data from LibB_vLspec_2 to include in feature matrixFor LibB_vLspec_2, Library LibB vs. Competitor Lspec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibB_vLspec_2.csv
+
+Parsing sr data from LibB_vLspec_3 to include in feature matrixFor LibB_vLspec_3, Library LibB vs. Competitor Lspec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibB_vLspec_3.csv
+
+Parsing sr data from LibB_vOspec_1 to include in feature matrixFor LibB_vOspec_1, Library LibB vs. Competitor Ospec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibB_vOspec_1.csv
+
+Parsing sr data from LibB_vOspec_2 to include in feature matrixFor LibB_vOspec_2, Library LibB vs. Competitor Ospec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibB_vOspec_2.csv
+
+Parsing sr data from LibB_vOspec_3 to include in feature matrixFor LibB_vOspec_3, Library LibB vs. Competitor Ospec on Host L-+O-read selection rates from output-notebook/selectionrate/srfiles//sr_LibB_vOspec_3.csv
+
+There are 7375 rows (observed fitness measurements) and 149 columns (terms of model, including a fitness column)
+
+
+
+tuning alpha for AIC...
+
+
+
+alpha chosen by tuning to AIC: 0.0014079889119370313
+
+tuning alpha for BIC...
+
+alpha chosen by tuning to BIC: 0.005396307460487159
+
+
+
+Performing Lasso model selection by cross-validation
+
+
+
+alpha chosen by CV:0.0026985811444514758
+

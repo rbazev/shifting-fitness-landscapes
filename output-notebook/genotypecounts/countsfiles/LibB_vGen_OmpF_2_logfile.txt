@@ -1,0 +1,19 @@
+after parsing FASTQ_files, initially saw these distributions for barcode lengths -- but note that if a read had barcode lengths outside of 5-12 on either side, that read pair is discarded:
+barcode 1 length distribution:
+[(9, 3406106), (6, 3164631), (7, 3141879), (5, 3095758), (8, 3038113), (10, 2726322), (12, 2643363), (11, 2442604), (4, 13948), (13, 3234), (3, 1288), (2, 680), (1, 294), (0, 176), (14, 152), (16, 57), (18, 53), (36, 44), (17, 42), (15, 40), (25, 20), (31, 19), (115, 15), (44, 10), (27, 10), (46, 9), (22, 8), (24, 5), (20, 5), (35, 1), (43, 1), (19, 1)]
+barcode 2 length distribution:
+[(7, 3517633), (5, 3376525), (6, 3083400), (8, 2969397), (9, 2751492), (10, 2716423), (11, 2694753), (12, 2554809), (4, 7488), (13, 4201), (3, 1046), (2, 404), (14, 224), (1, 223), (0, 150), (16, 94), (20, 82), (21, 62), (18, 59), (19, 55), (28, 55), (15, 50), (17, 43), (33, 30), (25, 28), (22, 25), (24, 23), (40, 22), (103, 18), (38, 17), (32, 15), (29, 12), (35, 9), (30, 8), (26, 5), (27, 4), (34, 2), (48, 2)]
+Discarded 0 reads that failed illumina filter
+
+Out of 25088144 read pairs:
+	purged 0,
+	discarded 26008 for containing N,
+	discarded 34548 for improper barcode length,
+	discarded 1383248 for failed substring search.
+
+Overall retained 23644340 read pairs containing 10732714 unique barcodes, prior to consensus building.
+
+distribution of number of reads per observed barcode (note consensus was only built for >= 3 reads per barcode):
+[(1, 8608763), (2, 737211), (9, 123010), (10, 122537), (8, 117329), (11, 115657), (7, 106898), (12, 105153), (3, 98929), (6, 93470), (13, 89424), (5, 79078), (14, 74111), (4, 68320), (15, 57501), (16, 43381), (17, 31126), (18, 21862), (19, 14597), (20, 9450), (21, 5915), (22, 3689), (23, 2126), (24, 1253), (25, 775), (26, 426), (27, 256), (28, 180), (29, 97), (30, 67), (31, 29), (32, 28), (33, 17), (34, 13), (35, 8), (37, 7), (38, 5), (39, 4), (36, 4), (46, 2), (42, 2), (56, 1), (48, 1), (40, 1), (43, 1)]
+
+number of retained barcodes, ie, number of consensus sequences built: 1386740
