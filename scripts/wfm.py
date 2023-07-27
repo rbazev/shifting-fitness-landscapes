@@ -263,42 +263,14 @@ for sim_i in range(1,num_sims+1):
 			assert weighted_si >= -1.0 and weighted_si <= 1.0
 			
 			if weighted_si == -1.0:
-				w = ws_dict['vEvoC-onlyOmpF']
-				landscape_record['%s' % gen_i] = ['si= %.2f; 1.0 vEvoC-onlyOmpF' % weighted_si]
+				w = ws_dict['vEvoC-onlyLamB']
+				landscape_record['%s' % gen_i] = ['si= %.2f; 1.0 vEvoC-onlyLamB' % weighted_si]
 
-			elif weighted_si > -1.0 and weighted_si < Lspec_competitor_coord:
-				wkey1 = 'vEvoC-onlyOmpF'
-				wkey2 = 'vLspec-mixed'
-				m = np.abs(weighted_si - (Lspec_competitor_coord))
-				l = np.abs(-1.0 - weighted_si)
-				weight1 = m/(l+m)
-				weight2 = 1.0 - weight1
-				w = weight1*ws_dict[wkey1] + weight2*ws_dict[wkey2]
-				landscape_record['%s' % gen_i] = ['si = %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
-
-			elif weighted_si == Lspec_competitor_coord:
-				w = ws_dict['vLspec-mixed']
-				landscape_record['%s' % gen_i] = ['si= %.2f; 1.0 vLspec-mixed' % weighted_si]
-
-			elif weighted_si > Lspec_competitor_coord and weighted_si < 0.0:
-				wkey1 = 'vLspec-mixed'
-				wkey2 = 'vEvoC-mixed'
-				m = np.abs(weighted_si - (0.0))
-				l = np.abs(Lspec_competitor_coord - weighted_si)
-				weight1 = m/(l+m)
-				weight2 = 1.0 - weight1
-				w = weight1*ws_dict[wkey1] + weight2*ws_dict[wkey2]
-				landscape_record['%s' % gen_i] = ['si = %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
-
-			elif weighted_si == 0.0:
-				w = ws_dict['vEvoC-mixed']
-				landscape_record['%s' % gen_i] = ['si= %.2f; 1.0 vEvoC-mixed' % weighted_si]
-
-			elif weighted_si > 0.0 and weighted_si < Ospec_competitor_coord:
-				wkey1 = 'vEvoC-mixed'
+			elif weighted_si > -1.0 and weighted_si < Ospec_competitor_coord:
+				wkey1 = 'vEvoC-onlyLamB'
 				wkey2 = 'vOspec-mixed'
-				m = np.abs(Ospec_competitor_coord - weighted_si)
-				l = np.abs(weighted_si - 0.0)
+				m = np.abs(weighted_si - (Ospec_competitor_coord))
+				l = np.abs(-1.0 - weighted_si)
 				weight1 = m/(l+m)
 				weight2 = 1.0 - weight1
 				w = weight1*ws_dict[wkey1] + weight2*ws_dict[wkey2]
@@ -308,19 +280,47 @@ for sim_i in range(1,num_sims+1):
 				w = ws_dict['vOspec-mixed']
 				landscape_record['%s' % gen_i] = ['si= %.2f; 1.0 vOspec-mixed' % weighted_si]
 
-			elif weighted_si > Ospec_competitor_coord and weighted_si < 1.0:
+			elif weighted_si > Ospec_competitor_coord and weighted_si < 0.0:
 				wkey1 = 'vOspec-mixed'
-				wkey2 = 'vEvoC-onlyLamB'
+				wkey2 = 'vEvoC-mixed'
+				m = np.abs(weighted_si - (0.0))
+				l = np.abs(Ospec_competitor_coord - weighted_si)
+				weight1 = m/(l+m)
+				weight2 = 1.0 - weight1
+				w = weight1*ws_dict[wkey1] + weight2*ws_dict[wkey2]
+				landscape_record['%s' % gen_i] = ['si = %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
+
+			elif weighted_si == 0.0:
+				w = ws_dict['vEvoC-mixed']
+				landscape_record['%s' % gen_i] = ['si= %.2f; 1.0 vEvoC-mixed' % weighted_si]
+
+			elif weighted_si > 0.0 and weighted_si < Lspec_competitor_coord:
+				wkey1 = 'vEvoC-mixed'
+				wkey2 = 'vLspec-mixed'
+				m = np.abs(Lspec_competitor_coord - weighted_si)
+				l = np.abs(weighted_si - 0.0)
+				weight1 = m/(l+m)
+				weight2 = 1.0 - weight1
+				w = weight1*ws_dict[wkey1] + weight2*ws_dict[wkey2]
+				landscape_record['%s' % gen_i] = ['si = %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
+
+			elif weighted_si == Lspec_competitor_coord:
+				w = ws_dict['vLspec-mixed']
+				landscape_record['%s' % gen_i] = ['si= %.2f; 1.0 vLspec-mixed' % weighted_si]
+
+			elif weighted_si > Lspec_competitor_coord and weighted_si < 1.0:
+				wkey1 = 'vLspec-mixed'
+				wkey2 = 'vEvoC-onlyOmpF'
 				m = np.abs(1.0 - weighted_si)
-				l = np.abs(weighted_si - Ospec_competitor_coord)
+				l = np.abs(weighted_si - Lspec_competitor_coord)
 				weight1 = m/(l+m)
 				weight2 = 1.0 - weight1
 				w = weight1*ws_dict[wkey1] + weight2*ws_dict[wkey2]
 				landscape_record['%s' % gen_i] = ['si = %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
 
 			elif weighted_si == 1.0:
-				w = ws_dict['vEvoC-onlyLamB']
-				landscape_record['%s' % gen_i] = ['si= %.2f; 1.0 vEvoC-onlyLamB' % weighted_si]
+				w = ws_dict['vEvoC-onlyOmpF']
+				landscape_record['%s' % gen_i] = ['si= %.2f; 1.0 vEvoC-onlyOmpF' % weighted_si]
 
 			else:
 				raise landscapeaxiserror

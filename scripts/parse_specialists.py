@@ -54,7 +54,7 @@ for gt in genotypes:
 		sro = sr_on_O[gt]
 	else:
 		sro = onanval
-	si = (np.exp(sro)-np.exp(srl))/(np.exp(sro)+np.exp(srl))
+	si = (np.exp(srl)-np.exp(sro))/(np.exp(sro)+np.exp(srl))
 	si_list.append(si)
 	si_dict[gt] = si
 
@@ -74,10 +74,10 @@ plt.close()
 # write specialist files with si > threshold = O-specialists and < -threshold = L-specialists
 threshold = 0.33
 for gt in myutils.construct_genotype_space():
-	if si_dict[gt] > threshold:
+	if si_dict[gt] < -threshold:
 		# O specialist:
 		Ospec_fileout.write(gt+',%.7f\n' % si_dict[gt])
-	elif si_dict[gt] < -threshold:
+	elif si_dict[gt] > threshold:
 		# L specialist:
 		Lspec_fileout.write(gt+',%.7f\n' % si_dict[gt])
 
@@ -109,7 +109,7 @@ for gt in genotypes:
 
 fig, axs = plt.subplots(nrows=1, ncols=1, figsize=(3.25,3))
 axs.axline((0, 0), slope=1, color = "grey", linestyle = ":", linewidth = 1.07/1.5)
-sc = axs.scatter(xs,ys,c=si_list, cmap='coolwarm',vmin=-1,vmax=1,s=8,linewidth=0.107, edgecolor='k', alpha=0.9) # 'PuOr_r'
+sc = axs.scatter(xs,ys,c=si_list, cmap='coolwarm_r',vmin=-1,vmax=1,s=8,linewidth=0.107, edgecolor='k', alpha=0.9) # 'PuOr_r'
 
 # overlay points specifically for the three competitors used in the experiment:
 Lspec = ('[100000010]', 'b') 
@@ -130,7 +130,7 @@ for  (gt,c) in [Lspec,Ospec, Genst]:
 		x = plotnanval
 		y = sr_on_O[gt]
 	si_list.append(si_dict[gt])
-	axs.scatter(x,y,c=si_list,cmap='coolwarm',vmin=-1,vmax=1,s=16,linewidth=0.107*11, edgecolor='k', alpha=1.0 ,marker='o')
+	axs.scatter(x,y,c=si_list,cmap='coolwarm_r',vmin=-1,vmax=1,s=16,linewidth=0.107*11, edgecolor='k', alpha=1.0 ,marker='o')
 
 axs.set_xlabel("Selection rate on LamB", fontsize=8)
 axs.set_ylabel("Selection rate on OmpF", fontsize=8)

@@ -70,7 +70,7 @@ for colortype in colortypes:
 			if df[gt].max() > args.minimumabundance:
 				if colortype == 'colorbysi':
 					si = si_dict[gt]
-					cmap = mpl.cm.get_cmap('coolwarm')
+					cmap = mpl.cm.get_cmap('coolwarm_r')
 					norm = mpl.colors.Normalize(vmin=-1, vmax=1)
 					this_color = cmap(norm(si))
 				elif colortype == 'colorbyspecialist':

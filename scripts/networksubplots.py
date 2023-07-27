@@ -38,7 +38,7 @@ else:
 # this same colordata will be used for all of the subplots figures created:
 #colortype = 'categorical' # v. 'quantitative'. categorig
 default_color = 'lightgray' 
-quant_cmap = plt.cm.coolwarm # used if colortype == 'quantitative'
+quant_cmap = plt.cm.coolwarm.reversed() # used if colortype == 'quantitative'; reversed_map = orig_map.reversed()
 (vmin, vmax) = (-1,1)
 categorical_colors = ['dodgerblue', 'tab:orange', 'lime']  # used if colortype == 'categorical'
 nodesize = 13
