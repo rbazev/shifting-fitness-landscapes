@@ -58,7 +58,7 @@ else:
 for i,f in enumerate(srfiles):
 	sr_dict = myutils.read_selectionrate_file(f, as_dict=True)
 	axis = axes[i]
-	title = f[f.find("Lib"):]
+	title = f[f.find("Lib"):-4]
 	xs = [] # sr of gt without LF
 	ys = [] # sr of gt with LF
 

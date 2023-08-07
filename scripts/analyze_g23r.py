@@ -69,7 +69,7 @@ else:
 for i,f in enumerate(srfiles):
 	sr_dict = myutils.read_selectionrate_file(f, as_dict=True)
 	axis = axes[i]
-	title = f[f.find("Lib"):]
+	title = f[f.find("Lib"):-4]
 	# iterate over genotypes G2
 	# scatter G2 sr vs. G3 sr
 	xs = [] # fitness w G2
@@ -111,7 +111,7 @@ else:
 for i,f in enumerate(srfiles):
 	sr_dict = myutils.read_selectionrate_file(f, as_dict=True)
 	axis = axes[i]
-	title = f[f.find("Lib"):]
+	title = f[f.find("Lib"):-4]
 	# iterate over genotypes G2
 	# scatter G2 sr vs. G3 sr
 	xs = [] # fitness w G2

@@ -79,8 +79,8 @@ for irow in range(0,nrows):
 				ys_corr.append(val2)
 
 		axes[irow,icol].scatter(xs_plot,ys_plot,color='k',s=14,linewidth=0.107*3.5, edgecolor='k', alpha=0.7)
-		axes[irow,icol].set_xlabel(f1, fontsize=16)
-		axes[irow,icol].set_ylabel(f2, fontsize=16)
+		axes[irow,icol].set_xlabel(f1[3:-4], fontsize=16)
+		axes[irow,icol].set_ylabel(f2[3:-4], fontsize=16)
 		axes[irow,icol].set_xlim(-11,10)
 		axes[irow,icol].set_ylim(-11,10)
 
