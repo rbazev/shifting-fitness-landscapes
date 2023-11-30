@@ -111,6 +111,7 @@ if len(args.batches) == 6:
 else:
 	nrows = 1
 	ncols = len(args.batches)
+	figsize = (4.5/3.0*ncols,4.0/2.0)
 
 fig, axes = plt.subplots(nrows=nrows, ncols=ncols, figsize=figsize)
 

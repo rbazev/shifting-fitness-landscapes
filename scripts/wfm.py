@@ -203,7 +203,7 @@ Ospecs = myutils.read_selectionrate_file(specialist_files_dir + 'Ospecialists.cs
 si_file = specialist_files_dir + 'si.csv'
 si_dict = myutils.read_selectionrate_file(si_file, as_dict=True)
 
-# Simulation parameters now taken from argparse (can find and replace throughout code for clarity later):
+# Simulation parameters now taken from argparse:
 population_size = args.popsize
 mutation_rate = args.mutrate
 num_generations = args.numgenerations
@@ -212,6 +212,7 @@ landscape_trajectory = args.landscapetrajectory
 	# string describing landscape trajectory in the form:
 	# 'static:x' where x is a string key for ws_dict as above; or 
 	# 'continuous' for continuous weighted-average transitions across 5 landscapes 
+	# 'discrete' for discrete jumps between experimental landscapes, using the nearest landscape based on population SI
 noisepergen = args.noisepergen # scaling factor for introducing normally-distributed noise on the experimental selection rates (ie, stdev of normally-distributed, 0-centered noise)
 noisepersim = args.noisepersim
 
@@ -274,7 +275,7 @@ for sim_i in range(1,num_sims+1):
 				weight1 = m/(l+m)
 				weight2 = 1.0 - weight1
 				w = weight1*ws_dict[wkey1] + weight2*ws_dict[wkey2]
-				landscape_record['%s' % gen_i] = ['si = %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
+				landscape_record['%s' % gen_i] = ['si= %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
 
 			elif weighted_si == Ospec_competitor_coord:
 				w = ws_dict['vOspec-mixed']
@@ -288,7 +289,7 @@ for sim_i in range(1,num_sims+1):
 				weight1 = m/(l+m)
 				weight2 = 1.0 - weight1
 				w = weight1*ws_dict[wkey1] + weight2*ws_dict[wkey2]
-				landscape_record['%s' % gen_i] = ['si = %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
+				landscape_record['%s' % gen_i] = ['si= %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
 
 			elif weighted_si == 0.0:
 				w = ws_dict['vEvoC-mixed']
@@ -302,7 +303,7 @@ for sim_i in range(1,num_sims+1):
 				weight1 = m/(l+m)
 				weight2 = 1.0 - weight1
 				w = weight1*ws_dict[wkey1] + weight2*ws_dict[wkey2]
-				landscape_record['%s' % gen_i] = ['si = %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
+				landscape_record['%s' % gen_i] = ['si= %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
 
 			elif weighted_si == Lspec_competitor_coord:
 				w = ws_dict['vLspec-mixed']
@@ -316,7 +317,7 @@ for sim_i in range(1,num_sims+1):
 				weight1 = m/(l+m)
 				weight2 = 1.0 - weight1
 				w = weight1*ws_dict[wkey1] + weight2*ws_dict[wkey2]
-				landscape_record['%s' % gen_i] = ['si = %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
+				landscape_record['%s' % gen_i] = ['si= %.2f; %.2f %s + %.2f %s' % (weighted_si, weight1, wkey1, weight2, wkey2)]
 
 			elif weighted_si == 1.0:
 				w = ws_dict['vEvoC-onlyOmpF']
@@ -328,7 +329,41 @@ for sim_i in range(1,num_sims+1):
 		elif landscape_trajectory.count('static') == 1:
 			wkey = landscape_trajectory[7:] # 'static:xxxx' > 'xxxx'
 			w = ws_dict[wkey]
-			landscape_record['%s' % gen_i] = [wkey]
+
+			weighted_si = compute_average_specialization_index(abundance,si_dict) # only calculating for bookkeeping; not used to select landscape
+			landscape_record['%s' % gen_i] = ['si= %.2f; static:%s' % (weighted_si, wkey)]
+
+
+		elif landscape_trajectory == 'discrete':
+			# use the experimental fitness landscape closest to the simulated population's specialization index, `weighted_si`.
+			weighted_si = compute_average_specialization_index(abundance,si_dict)
+
+			Lspec_competitor_si = si_dict['[100000010]']
+			Ospec_competitor_si = si_dict['[101001011]']
+			# use the si of the competitors, which were at 90% at the start of the competition, 
+			# to place the landscapes on the "net si" axis from -1 to 1. (same math as in the continuous shifting model above)
+			Lspec_competitor_coord = Lspec_competitor_si*0.9
+			Ospec_competitor_coord = Ospec_competitor_si*0.9
+			assert weighted_si >= -1.0 and weighted_si <= 1.0
+
+			# define the 5 experimental landscapes by their respective SI coordinates.
+			wkeys_dict = { -1.0 : 'vEvoC-onlyLamB',
+						   Ospec_competitor_coord : 'vOspec-mixed',
+						   0.0 : 'vEvoC-mixed',
+						   Lspec_competitor_coord : 'vLspec-mixed',
+						   1.0 : 'vEvoC-onlyOmpF'}
+
+			# find the discrte SI coordinate corresponding to an experimental landscape above, 
+			# which is closest to the simulation's SI (`weighted_si`):
+			coords = [-1.0, Ospec_competitor_coord, 0.0, Lspec_competitor_coord, 1.0]
+			discrete_coord = min(coords, key=lambda x:abs(x - weighted_si)) 
+
+			# use the experimental fitness landscape nearest to the weighted_si, without interpolation between two landscapes
+			wkey = wkeys_dict[discrete_coord]
+			w = ws_dict[wkey] 
+
+			# keep record of the weighted_si this generation, and the discrete fitness landscape used:
+			landscape_record['%s' % gen_i] = ['si= %.2f; landscape=%s' % (weighted_si, wkey)]
 
 		else:
 			raise landscapetrajectoryerror
