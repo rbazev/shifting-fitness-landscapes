@@ -8,3 +8,4 @@ The exact versions of all software packages used in the analysis are provided in
 
 Typical install time should not be longer than several minutes. Downloading FASTQ files can take several hours on a standard personal computer with standard internet connection. Running the entire analysis pipeline in the notebook can take several hours. Intermediate data files at various stages of the analyses are included so that individual steps in the analysis can be run without starting from the very beginning, if desired. All expected output can be found in `/output-notebook`. 
 
+[![DOI](https://zenodo.org/badge/669231319.svg)](https://zenodo.org/doi/10.5281/zenodo.10459905)
