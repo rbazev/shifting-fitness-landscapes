@@ -50,7 +50,7 @@ edgealpha = 0.2
 titlefontsize = 8
 
 
-def plotNetworkSubplots(samples, nrows, ncols, fileprefix, squish=False):
+def plotNetworkSubplots(samples, nrows, ncols, fileprefix, squish=False, clarity=False):
 	assert ncols*nrows == len(samples)
 	if squish:
 		figsize = (9.25,3.25)
@@ -96,6 +96,12 @@ def plotNetworkSubplots(samples, nrows, ncols, fileprefix, squish=False):
 
 		axis.axhline(color = "grey", linestyle = ":", linewidth = 1)
 		nx.draw_networkx_edges(G=G, pos = pos, ax=axis, edge_color='k', alpha=edgealpha, width=edgewidth)
+
+		# "clarity" keyword argument changes some aesthetic parameters
+		if clarity:
+			nodesize = 6
+		else:
+			nodesize = 13
 		nx.draw_networkx_nodes(G=G, pos = pos, ax=axis, alpha=nodealpha, linewidths=nodelinewidths, edgecolors='k',
                         node_size = nodesize, node_color=c, cmap=cmap, vmin=vmin, vmax=vmax)
 
@@ -201,3 +207,6 @@ averaged_samples = ['LibAvg_vGen_OmpF',
 					'LibAvg_vGen_LamB']
 plotNetworkSubplots(averaged_samples, 1, 5, 'five_environments')
 plotNetworkSubplots(averaged_samples, 1, 5, 'five_environments_squish', squish=True)
+
+for samp in averaged_samples:
+	plotNetworkSubplots([samp], 1, 1, '%s_clarity' % samp, clarity=True)
